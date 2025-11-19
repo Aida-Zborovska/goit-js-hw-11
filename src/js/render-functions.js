@@ -1,10 +1,17 @@
-export default { createGallery, clearGallery, showLoader, hideLoader };
+import SimpleLightbox from 'simplelightbox';
 
-const lightbox = new SimpleLightbox('.gallery a', {
+const loader = document.querySelector('.loader-target');
+const galleryElem = document.querySelector('.gallery');
+
+const gallery = new SimpleLightbox('.gallery a', {
   /* options */
 });
 
-function createGallery(images) {
+export function createGallery(images) {
+  console.log('g');
+
+  const markup = '<a href=""><img src="" alt="" /></a>';
+  galleryElem.innerHTML = markup;
   // <div class="gallery">
   //   <a href="images/image1.jpg">
   //     <img src="images/thumbs/thumb1.jpg" alt="" title="" />
@@ -18,17 +25,14 @@ function createGallery(images) {
   //  SimpleLightbox refresh().Нічого не повертає.
 }
 
-function clearGallery() {
-  // Ця функція нічого не приймає та повинна очищати вміст контейнера галереї.
-  // Нічого не повертає.
+export function clearGallery() {
+  galleryElem.innerHTML = '';
 }
 
-function showLoader() {
-  // Ця функція нічого не приймає, повинна додавати клас для відображення лоадера.
-  //  Нічого не повертає.
+export function showLoader() {
+  loader.classList.add('loader');
 }
 
-function hideLoader() {
-  // Ця функція нічого не приймає, повинна прибирати клас для відображення лоадера.
-  //  Нічого не повертає.
+export function hideLoader() {
+  loader.classList.remove('loader');
 }
