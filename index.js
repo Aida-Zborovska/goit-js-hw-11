@@ -20,5 +20,5 @@ import{a as u,S as f,i as m}from"./assets/vendor-BTKY1Grq.js";(function(){const 
         <p class="info-point-value">${p}</p>
       </li>
     </ul>
-  </li>`}const a=document.querySelector(".form");a.addEventListener("submit",w);function w(t){t.preventDefault();const r=a.elements["search-text"].value.trim();r&&(h(),b(),a.reset(),d(r).then(i=>{i.length>0?y(i):S("Sorry, there are no images matching your search query. Please try again!")}).catch(i=>console.error(i)).finally(()=>L()))}function S(t){m.show({message:t,position:"topRight",messageColor:"#FFFFFF",backgroundColor:"#EF4040",progressBarColor:"#B51B1B",iconUrl:"./img/icon-error.png",iconColor:"#FAFAFB",maxWidth:"432px"})}
+  </li>`}const a=document.querySelector(".form");a.addEventListener("submit",w);function w(t){t.preventDefault();const r=a.elements["search-text"].value.trim();r&&(h(),b(),a.reset(),d(r).then(i=>{i.length>0?y(i):S("Sorry, there are no images matching your search query. Please try again!")}).catch(i=>console.error(i)).finally(()=>L()))}function S(t){m.show({message:t,position:"topRight",messageColor:"#FFFFFF",backgroundColor:"#EF4040",progressBarColor:"#B51B1B",iconUrl:"/img/icon-error.png",iconColor:"#FAFAFB",maxWidth:"432px"})}
 //# sourceMappingURL=index.js.map
