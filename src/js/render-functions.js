@@ -1,28 +1,21 @@
 import SimpleLightbox from 'simplelightbox';
 
-const loader = document.querySelector('.loader-target');
+const loader = document.querySelector('.loader');
 const galleryElem = document.querySelector('.gallery');
 
-const gallery = new SimpleLightbox('.gallery a', {
-  /* options */
+let gallery = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+  overlay: true,
+  overlayOpacity: 0.8,
 });
 
 export function createGallery(images) {
-  console.log('g');
-
-  const markup = '<a href=""><img src="" alt="" /></a>';
-  galleryElem.innerHTML = markup;
-  // <div class="gallery">
-  //   <a href="images/image1.jpg">
-  //     <img src="images/thumbs/thumb1.jpg" alt="" title="" />
-  //   </a>
-  //   <a href="images/image2.jpg">
-  //     <img src="images/thumbs/thumb2.jpg" alt="" title="Beautiful Image" />
-  //   </a>
-  // </div>; - з документації лайтбкс
-  // Ця функція повинна приймати масив images, створювати HTML - розмітку
-  //  для галереї, додавати її в контейнер галереї та викликати метод екземпляра
-  //  SimpleLightbox refresh().Нічого не повертає.
+  const markup = imagesTemplate(images);
+  galleryElem.insertAdjacentHTML('beforeend', markup);
+  gallery.refresh();
 }
 
 export function clearGallery() {
@@ -30,9 +23,48 @@ export function clearGallery() {
 }
 
 export function showLoader() {
-  loader.classList.add('loader');
+  loader.classList.remove('hidden');
 }
 
 export function hideLoader() {
-  loader.classList.remove('loader');
+  loader.classList.add('hidden');
+}
+
+function imagesTemplate(images) {
+  return images.map(imageTemplate).join('');
+}
+
+function imageTemplate(image) {
+  const {
+    webformatURL,
+    largeImageURL,
+    tags,
+    likes,
+    views,
+    comments,
+    downloads,
+  } = image;
+  return `<li class="gallery-item">
+    <a class="gallery-link" href="${largeImageURL}">
+      <img class="gallery-image" src="${webformatURL}" alt="${tags}" />
+    </a>
+    <ul class="image-info">
+      <li class="info-point">
+        <p class="info-point-label">Likes</p>
+        <p class="info-point-value">${likes}</p>
+      </li>
+      <li class="info-point">
+        <p class="info-point-label">Views</p>
+        <p class="info-point-value">${views}</p>
+      </li>
+      <li class="info-point">
+        <p class="info-point-label">Comments</p>
+        <p class="info-point-value">${comments}</p>
+      </li>
+      <li class="info-point">
+        <p class="info-point-label">Downloads</p>
+        <p class="info-point-value">${downloads}</p>
+      </li>
+    </ul>
+  </li>`;
 }

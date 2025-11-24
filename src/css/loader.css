@@ -1,28 +1,30 @@
 .loader {
-  width: 108px;
-  height: 60px;
-  color: #4e75ff;
-  --c: radial-gradient(farthest-side, currentColor 96%, #0000);
-  background: var(--c) 100% 100% /30% 60%, var(--c) 70% 0 /50% 100%,
-    var(--c) 0 100% /36% 68%, var(--c) 27% 18% /26% 40%,
-    linear-gradient(currentColor 0 0) bottom/67% 58%;
-  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  margin: 32px auto;
   position: relative;
-  margin-top: 32px;
-  margin-left: auto;
-  margin-right: auto;
+  color: #4e75ff;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
 }
-.loader:after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  opacity: 0.4;
-  animation: l7 1s infinite;
-}
-@keyframes l7 {
-  to {
-    transform: scale(1.8);
-    opacity: 0;
+
+@keyframes animloader {
+  0% {
+    box-shadow: -38px -12px, -14px 0, 14px 0, 38px 0;
   }
+  33% {
+    box-shadow: -38px 0px, -14px -12px, 14px 0, 38px 0;
+  }
+  66% {
+    box-shadow: -38px 0px, -14px 0, 14px -12px, 38px 0;
+  }
+  100% {
+    box-shadow: -38px 0, -14px 0, 14px 0, 38px -12px;
+  }
+}
+
+.hidden {
+  display: none;
 }

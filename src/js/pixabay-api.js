@@ -1,15 +1,14 @@
-// Ця функція повинна приймати один параметр query(пошукове слово, яке є рядком),
-//   здійснювати HTTP - запит і повертати значення властивості data з отриманої відповіді.
+import axios from 'axios';
 
-export default function getImagesByQuery(query) {}
-
-// Список параметрів рядка запиту, які тобі обов'язково необхідно вказати:
-
-// key — твій унікальний ключ доступу до API.
-// q — слово для пошуку. Те, що буде вводити користувач.
-// image_type — тип зображення. Потрібні тільки фотографії, тому постав значення photo.
-// orientation — орієнтація фотографії. Постав значення horizontal.
-// safesearch — фільтр за віком. Постав значення true.
-
-// У відповіді буде об’єкт із декількома властивостями, в одному з яких(hits) буде масив об’єктів
-//  із зображеннями, що задовольнили критерії параметрів запиту.
+export default function getImagesByQuery(query) {
+  const params = {
+    key: '53321063-39b236969f2c986560565235a',
+    q: query,
+    image_type: 'photo',
+    orientation: 'horizontal',
+    safesearch: true,
+  };
+  return axios
+    .get('https://pixabay.com/api/', { params })
+    .then(res => res.data.hits);
+}
