@@ -41,8 +41,6 @@ function showMessage(message) {
     messageColor: '#FFFFFF',
     backgroundColor: '#EF4040',
     progressBarColor: '#B51B1B',
-    iconUrl: '/img/icon-error.png',
-    iconColor: '#FAFAFB',
     maxWidth: '432px',
   });
 }
